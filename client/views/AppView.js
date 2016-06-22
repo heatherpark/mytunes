@@ -7,7 +7,7 @@ var AppView = Backbone.View.extend({
 
     // change:currentSong - this is Backbone's way of allowing you to filter events to
     // ONLY receive change events for the specific property, 'currentSong'
-    this.model.on('change:currentSong', function(model){
+    this.model.on('change:currentSong', function(model){  // this.model refers to app (appModel instance)
       this.playerView.setSong(model.get('currentSong'));
     }, this);
   },

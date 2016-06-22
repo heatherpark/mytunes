@@ -9,11 +9,12 @@ var PlayerView = Backbone.View.extend({
   },
 
   setSong: function(song){
-    this.model = song;
+    this.model = song;  // sets this view's model to 'currentSong'
     this.render();
   },
 
   render: function(){
+    // sets src equal to this.model.url (currentSong) or empty string
     return this.$el.attr('src', this.model ? this.model.get('url') : '');
   }
 
