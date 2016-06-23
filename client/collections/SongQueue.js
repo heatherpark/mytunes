@@ -5,12 +5,24 @@ var SongQueue = Songs.extend({
     var firstSong = this.at(0);
     firstSong.play();
   },
-  // playFirst method
-    // pass the first song to the set song method
-    // reset the current song
-    // play the current song
 
   initialize: function(){
+    this.on('add', function() {
+      if (this.length === 1) {
+        this.playFirst();
+      }
+    }, this);
+
+    this.on('ended', function() {
+      this.remove(this.at(0));
+      if (this.length) {
+        this.playFirst();
+      }
+    }, this);
+
+    this.on('dequeue', function(song) {
+      this.remove(song);
+    }, this);
   }
 
 });
